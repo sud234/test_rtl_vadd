@@ -110,16 +110,14 @@ int main(int argc, char **argv) {
     //Launch the Kernel
     OCL_CHECK(err, err = q.enqueueTask(krnl_vadd));
 
-    //Copy Result from Device Global Memory to Host Local Memory
-    OCL_CHECK(err,
-              err = q.enqueueMigrateMemObjects({buffer_w},
-                                               CL_MIGRATE_MEM_OBJECT_HOST));
-    OCL_CHECK(err, err = q.finish());
 
     //OPENCL HOST CODE AREA END
 
-    // Compare the results of the Device to the simulation
+    // Compare the results of the Device to the simulations
     int match = 0;
+
+    int hello = 10;
+
     for (int i = 0; i < size; i++) {
         if (source_hw_results[i] != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
@@ -131,6 +129,8 @@ int main(int argc, char **argv) {
             break;
         }
     }
+
+    println("Oh My god")
 
 
     std::cout << "TEST " << (match ? "FAILED" : "PASSED") << std::endl;
