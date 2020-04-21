@@ -60,40 +60,7 @@ int main(int argc, char **argv) {
 
     //OPENCL HOST CODE AREA START
     //Create Program and Kernel
-    auto devices = xcl::get_xil_devices();
-    auto device = devices[0];
-
-    OCL_CHECK(err, cl::Context context(device, NULL, NULL, NULL, &err));
-    OCL_CHECK(
-        err,
-        cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE, &err));
-    auto device_name = device.getInfo<CL_DEVICE_NAME>();
-
-   auto fileBuf = xcl::read_binary_file(binaryFile);
-   cl::Program::Binaries bins{{fileBuf.data(), fileBuf.size()}};
-    devices.resize(1);
-    OCL_CHECK(err, cl::Program program(context, devices, bins, NULL, &err));
-    OCL_CHECK(err, cl::Kernel krnl_vadd(program, "krnl_vadd_rtl", &err));
-
-    //Allocate Buffer in Global Memory
-    OCL_CHECK(err,
-              cl::Buffer buffer_r1(context,
-                                   CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
-                                   vector_size_bytes,
-                                   source_input1.data(),
-                                   &err));
-    OCL_CHECK(err,
-              cl::Buffer buffer_r2(context,
-                                   CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
-                                   vector_size_bytes,
-                                   source_input2.data(),
-                                   &err));
-    OCL_CHECK(err,
-              cl::Buffer buffer_w(context,
-                                  CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
-                                  vector_size_bytes,
-                                  source_hw_results.data(),
-                                  &err));
+    blah blah blah;
 
     //Set the Kernel Arguments
     OCL_CHECK(err, err = krnl_vadd.setArg(0, buffer_r1));
