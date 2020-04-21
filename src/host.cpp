@@ -108,7 +108,11 @@ int main(int argc, char **argv) {
                                                0 /* 0 means from host*/));
 
     //Launch the Kernel
-    OCL_CHECK(err, err = q.enqueueTask(krnl_vadd));
+    OCL_CHECK(err, err = q.enqueueT
+
+
+
+      ask(krnl_vadd));
 
 
     //OPENCL HOST CODE AREA END
