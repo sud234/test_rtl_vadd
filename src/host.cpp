@@ -28,18 +28,50 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 **********/
 #include "xcl2.hpp"
 #include <vector>
+#include <tuple>
+
+using namespace std;
+
+
+auto foo(std::string binaryFile) {
+  struct retVals {        // Declare a local structure
+	cl::Context context1;
+	cl::CommandQueue q;
+	cl::Kernel krnl_vadd;
+  };
+	//Local variable
+  cl_int err;
+
+  //OPENCL HOST CODE AREA START
+  //Create Program and Kernel
+  auto devices = xcl::get_xil_devices();
+  auto device = devices[0];
+  OCL_CHECK(err, cl::Context context(device, NULL, NULL, NULL, &err));
+  OCL_CHECK(
+      err,
+      cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE, &err));
+
+  auto device_name = device.getInfo<CL_DEVICE_NAME>();
+
+  auto fileBuf = xcl::read_binary_file(binaryFile);
+  cl::Program::Binaries bins{{fileBuf.data(), fileBuf.size()}};
+   devices.resize(1);
+   OCL_CHECK(err, cl::Program program(context, devices, bins, NULL, &err));
+   OCL_CHECK(err, cl::Kernel krnl_vadd(program, "krnl_vadd_rtl", &err));
+
+
+  return retVals {context, q, krnl_vadd}; // Return the local structure
+}
 
 #define DATA_SIZE 256
-aksjdhaiusbhda
-stdasdasdjb 
-asd asjd 
-
 
 int main(int argc, char **argv) {
     if (argc != 2) {
+        std::cout << "Usage: " << argv[0] << " <XCLBIN File>" << std::endl;
         return EXIT_FAILURE;
     }
 
+    std::string binaryFile = argv[1];
 
     cl_int err;
     auto size = DATA_SIZE;
@@ -58,22 +90,8 @@ int main(int argc, char **argv) {
         source_hw_results[i] = 0;
     }
 
-    //OPENCL HOST CODE AREA START
-    //Create Program and Kernel
-    auto devices = xcl::get_xil_devices();
-    auto device = devices[0];
+    auto [context, q, krnl_vadd] = foo(binaryFile);
 
-    OCL_CHECK(err, cl::Context context(device, NULL, NULL, NULL, &err));
-    OCLkjh _CHECK(
-        err,
-        cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE, &err));
-    auto device_name = device.getInfo<CL_DEVICE_NAME>();
-
-   auto fileBuf = xcl::read_binary_file(binaryFile);
-   cl::Program::Binaries bins{{fileBuf.data(), fileBuf.size()}};
-    devices.resize(1);
-    OCL_Chjbjhi HECK(err, cl::Program program(context, devices, bins, NULL, &err));
-    OCL_CHECK(err, cl::Kernel krnl_vadd(program, "krnl_vadd_rtl", &err));
 
     //Allocate Buffer in Global Memory
     OCL_CHECK(err,
@@ -82,13 +100,13 @@ int main(int argc, char **argv) {
                                    vector_size_bytes,
                                    source_input1.data(),
                                    &err));
-    OCL_CHjkojoECK(err,
+    OCL_CHECK(err,
               cl::Buffer buffer_r2(context,
                                    CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
                                    vector_size_bytes,
                                    source_input2.data(),
                                    &err));
-    OCL_CHECK(err,kjbkjnojojnioj
+    OCL_CHECK(err,
               cl::Buffer buffer_w(context,
                                   CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
                                   vector_size_bytes,
@@ -107,49 +125,31 @@ int main(int argc, char **argv) {
                                                0 /* 0 means from host*/));
 
     //Launch the Kernel
-    OCL_CHECK(err, err = q.enqueueT
+    OCL_CHECK(err, err = q.enqueueTask(krnl_vadd));
 
-
-
-      ask(krnl_vadd));
-
+    //Copy Result from Device Global Memory to Host Local Memory
+    OCL_CHECK(err,
+              err = q.enqueueMigrateMemObjects({buffer_w},
+                                               CL_MIGRATE_MEM_OBJECT_HOST));
+    OCL_CHECK(err, err = q.finish());
 
     //OPENCL HOST CODE AREA END
 
-    // Compare the results of the Device to the simulations
+    // Compare the results of the Device to the simulation
     int match = 0;
-
-    int hello = 10;
-
     for (int i = 0; i < size; i++) {
         if (source_hw_results[i] != source_sw_results[i]) {
             std::cout << "Error: Result mismatch" << std::endl;
             std::cout << "i = " << i
-
-
-
-
                       << " Software result = " << source_sw_results[i]
                       << " Device result = " << source_hw_results[i]
-
-
-
                       << std::endl;
             match = 1;
             break;
         }
     }
 
-    println("Oh My god")
-
 
     std::cout << "TEST " << (match ? "FAILED" : "PASSED") << std::endl;
     return (match ? EXIT_FAILURE : EXIT_SUCCESS);
-
-
-
-    
 }
-
-
-
