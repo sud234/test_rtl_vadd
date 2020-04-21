@@ -40,7 +40,6 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
 
-    std::string binaryFile = argv[1];
 
     cl_int err;
     auto size = DATA_SIZE;
