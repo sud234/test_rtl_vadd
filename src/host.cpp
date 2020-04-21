@@ -30,10 +30,13 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 
 #define DATA_SIZE 256
+aksjdhaiusbhda
+stdasdasdjb 
+asd asjd 
+
 
 int main(int argc, char **argv) {
     if (argc != 2) {
-        std::cout << "Usage: " << argv[0] << " <XCLBIN File>" << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -133,3 +136,6 @@ int main(int argc, char **argv) {
     std::cout << "TEST " << (match ? "FAILED" : "PASSED") << std::endl;
     return (match ? EXIT_FAILURE : EXIT_SUCCESS);
 }
+
+
+
