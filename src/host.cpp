@@ -65,7 +65,7 @@ int main(int argc, char **argv) {
     auto device = devices[0];
 
     OCL_CHECK(err, cl::Context context(device, NULL, NULL, NULL, &err));
-    OCL_CHECK(
+    OCLkjh _CHECK(
         err,
         cl::CommandQueue q(context, device, CL_QUEUE_PROFILING_ENABLE, &err));
     auto device_name = device.getInfo<CL_DEVICE_NAME>();
@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
    auto fileBuf = xcl::read_binary_file(binaryFile);
    cl::Program::Binaries bins{{fileBuf.data(), fileBuf.size()}};
     devices.resize(1);
-    OCL_CHECK(err, cl::Program program(context, devices, bins, NULL, &err));
+    OCL_Chjbjhi HECK(err, cl::Program program(context, devices, bins, NULL, &err));
     OCL_CHECK(err, cl::Kernel krnl_vadd(program, "krnl_vadd_rtl", &err));
 
     //Allocate Buffer in Global Memory
@@ -83,13 +83,13 @@ int main(int argc, char **argv) {
                                    vector_size_bytes,
                                    source_input1.data(),
                                    &err));
-    OCL_CHECK(err,
+    OCL_CHjkojoECK(err,
               cl::Buffer buffer_r2(context,
                                    CL_MEM_USE_HOST_PTR | CL_MEM_READ_ONLY,
                                    vector_size_bytes,
                                    source_input2.data(),
                                    &err));
-    OCL_CHECK(err,
+    OCL_CHECK(err,kjbkjnojojnioj
               cl::Buffer buffer_w(context,
                                   CL_MEM_USE_HOST_PTR | CL_MEM_WRITE_ONLY,
                                   vector_size_bytes,
