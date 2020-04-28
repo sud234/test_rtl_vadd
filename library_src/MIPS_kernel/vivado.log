@@ -1,0 +1,100 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Mon Apr 27 22:50:22 2020
+# Process ID: 13087
+# Current directory: /home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel
+# Command line: vivado -mode batch -source scripts/gen_xo.tcl -tclargs RTL_AAIA.xo krnl_AAIA Xil AWS
+# Log file: /home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/vivado.log
+# Journal file: /home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/vivado.jou
+#-----------------------------------------------------------
+source scripts/gen_xo.tcl
+# if { $::argc != 4 } {
+#     puts "ERROR: Program \"$::argv0\" requires 4 arguments!\n"
+#     puts "Usage: $::argv0 <xoname> <krnl_name> <target> <device>\n"
+#     exit
+# }
+# set xoname    [lindex $::argv 0]
+# set krnl_name [lindex $::argv 1]
+# set target    [lindex $::argv 2]
+# set device    [lindex $::argv 3]
+# set suffix "${krnl_name}_${target}_${device}"
+# source scripts/package_kernel.tcl
+## set path_to_hdl "./src"
+## set path_to_packaged "./packaged_kernel_${suffix}"
+## set path_to_tmp_project "./tmp_kernel_pack_${suffix}"
+## create_project -force kernel_pack $path_to_tmp_project 
+## add_files -norecurse [glob $path_to_hdl/*.v $path_to_hdl/*.sv]
+## update_compile_order -fileset sources_1
+## update_compile_order -fileset sim_1
+## ipx::package_project -root_dir $path_to_packaged -vendor xilinx.com -library RTLKernel -taxonomy /KernelIP -import_files -set_current false
+INFO: [IP_Flow 19-5169] Module 'krnl_vadd_rtl' uses SystemVerilog sources with a Verilog top file. These SystemVerilog files will not be analysed by the packager.
+INFO: [IP_Flow 19-1842] HDL Parser: Found include file "src/defines.v" from the top-level HDL file.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2019.1/data/ip'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'm_axi_gmem' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 's_axi_control' of definition 'xilinx.com:interface:aximm:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ap_rst_n' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'ap_clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'ap_rst_n': Added interface parameter 'POLARITY' with value 'ACTIVE_LOW'.
+INFO: [IP_Flow 19-4728] Bus Interface 'ap_clk': Added interface parameter 'ASSOCIATED_RESET' with value 'ap_rst_n'.
+WARNING: [IP_Flow 19-3158] Bus Interface 'm_axi_gmem': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3158] Bus Interface 's_axi_control': FREQ_HZ bus parameter missing from AXI interface when interface is not associated to a clock.
+WARNING: [IP_Flow 19-3157] Bus Interface 'ap_rst_n': Bus parameter POLARITY is ACTIVE_LOW but port 'ap_rst_n' is not *resetn - please double check the POLARITY setting.
+WARNING: [IP_Flow 19-3153] Bus Interface 'ap_clk': ASSOCIATED_BUSIF bus parameter is missing.
+INFO: [IP_Flow 19-2181] Payment Required is not set for this core.
+INFO: [IP_Flow 19-2187] The Product Guide file is missing.
+## ipx::unload_core $path_to_packaged/component.xml
+## ipx::edit_ip_in_project -upgrade true -name tmp_edit_project -directory $path_to_packaged $path_to_packaged/component.xml
+INFO: [IP_Flow 19-795] Syncing license key meta-data
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/defines.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/ALU.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/Controller.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/EXE_to_MEM_pipereg.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/Execute_inst.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/ID_to_EXE_pipereg.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/IF_to_ID_pipereg.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/Instruction_Decode.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/Instruction_Fetch.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/Instruction_Mem.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/MEM_to_WB_pipereg.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/MIPS_top.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/Memory_access.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/Write_Back.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/fifo_to_MIPS_IF.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/hazard_detection_unit.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/krnl_vadd_rtl_control_s_axi.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/reg_32_memory.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/krnl_vadd_rtl_axi_read_master.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/krnl_vadd_rtl_axi_write_master.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/krnl_vadd_rtl_counter.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/krnl_vadd_rtl_int.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [/home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/packaged_kernel_krnl_AAIA_Xil_AWS/src/krnl_vadd_rtl.v:]
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2019.1/data/ip'.
+ipx::edit_ip_in_project: Time (s): cpu = 00:00:02 ; elapsed = 00:00:06 . Memory (MB): peak = 1483.488 ; gain = 8.477 ; free physical = 1329 ; free virtual = 4490
+## set_property core_revision 2 [ipx::current_core]
+## foreach up [ipx::get_user_parameters] {
+##   ipx::remove_user_parameter [get_property NAME $up] [ipx::current_core]
+## }
+## set_property sdx_kernel true [ipx::current_core]
+## set_property sdx_kernel_type rtl [ipx::current_core]
+## ipx::create_xgui_files [ipx::current_core]
+## ipx::associate_bus_interfaces -busif m_axi_gmem -clock ap_clk [ipx::current_core]
+INFO: [IP_Flow 19-4728] Bus Interface 'ap_clk': Added interface parameter 'ASSOCIATED_BUSIF' with value 'm_axi_gmem'.
+## ipx::associate_bus_interfaces -busif s_axi_control -clock ap_clk [ipx::current_core]
+## set_property xpm_libraries {XPM_CDC XPM_MEMORY XPM_FIFO} [ipx::current_core]
+## set_property supported_families { } [ipx::current_core]
+## set_property auto_family_support_level level_2 [ipx::current_core]
+## ipx::update_checksums [ipx::current_core]
+## ipx::save_core [ipx::current_core]
+## close_project -delete
+# if {[file exists "${xoname}"]} {
+#     file delete -force "${xoname}"
+# }
+# package_xo -xo_path ${xoname} -kernel_name ${krnl_name} -ip_directory ./packaged_kernel_${suffix} -kernel_xml ./src/kernel.xml
+WARNING: [Vivado 12-4404] The CPU emulation flow in XOCC is only supported when using a packaged XO file that contains C-model files, none were found.
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 27 22:50:53 2020...

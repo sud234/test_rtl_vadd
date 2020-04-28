@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:47:09 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Mon Apr 27 22:50:22 2020
+# Process ID: 13087
+# Current directory: /home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel
+# Command line: vivado -mode batch -source scripts/gen_xo.tcl -tclargs RTL_AAIA.xo krnl_AAIA Xil AWS
+# Log file: /home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/vivado.log
+# Journal file: /home/devters/git_env/test_rtl_vadd/library_src/MIPS_kernel/vivado.jou
+#-----------------------------------------------------------
+source scripts/gen_xo.tcl
